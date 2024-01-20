@@ -10,7 +10,7 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main", "with-GitHub-CI" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 

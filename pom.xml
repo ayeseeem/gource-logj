@@ -4,13 +4,13 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.ayeseeem</groupId>
-  <artifactId>ARTIFACT_NAME</artifactId>
+  <artifactId>gource-log</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>ayeseeem.org ARTIFACT_NAME</name>
-  <description>Description of ARTIFACT_NAME</description>
-  <url>https://github.com/ayeseeem/ARTIFACT_NAME</url>
+  <name>ayeseeem.org gource-log</name>
+  <description>A simple Java library to handle the Gource Custom Log Format.</description>
+  <url>https://github.com/ayeseeem/gource-logj</url>
   <organization>
     <name>${osgi.bundle.vendor}</name>
     <url>https://ayeseeem.org/</url>

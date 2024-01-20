@@ -1,4 +1,4 @@
-package org.ayeseeem.ARTIFACT_NAME;
+package org.ayeseeem.gource.log;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

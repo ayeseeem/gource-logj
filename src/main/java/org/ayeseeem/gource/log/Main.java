@@ -1,4 +1,4 @@
-package org.ayeseeem.ARTIFACT_NAME;
+package org.ayeseeem.gource.log;
 
 public class Main {
 
