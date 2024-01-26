@@ -7,6 +7,24 @@ A simple Java library to handle the [Gource](https://gource.io/)
 [Custom Log Format](https://github.com/acaudwell/Gource).
 
 
+Example
+-------
+
+Example log is generated and output by
+[`ExampleTest.java`](src/test/java/org/ayeseeem/gource/log/ExampleTest.java)'s
+`testGenerateExample()`.
+It is captured in
+[`example.log`](src/test/java/org/ayeseeem/gource/log/ExampleTest.java)
+and you can try it out using this command (Windows path):
+
+```console
+gource src\test\resources\example.log
+```
+
+To confirm the details of timestamp, you can slow the playback down by
+adding `-s 3600` to the command.
+
+
 Coding Standard
 ---------------
 
