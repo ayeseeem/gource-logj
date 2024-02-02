@@ -1,13 +1,18 @@
 package org.ayeseeem.gource.log;
 
 import java.awt.Color;
+import java.io.PrintStream;
 import java.time.Instant;
 import java.util.List;
 
 public class Writer {
 
     public static void write(List<LogEntry> log) {
-        log.forEach(entry -> System.out.println(output(entry)));
+        write(log, System.out);
+    }
+
+    public static void write(List<LogEntry> log, PrintStream to) {
+        log.forEach(entry -> to.println(output(entry)));
     }
 
     static String output(LogEntry entry) {
