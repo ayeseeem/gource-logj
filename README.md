@@ -14,7 +14,7 @@ Example log is generated and output by
 [`ExampleTest.java`](src/test/java/org/ayeseeem/gource/log/ExampleTest.java)'s
 `testGenerateExample()`.
 It is captured in
-[`example.log`](src/test/java/org/ayeseeem/gource/log/ExampleTest.java)
+[`example.log`](src/test/resources/example.log)
 and you can try it out using this command (Windows path):
 
 ```console
