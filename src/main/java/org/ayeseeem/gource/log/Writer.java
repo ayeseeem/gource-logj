@@ -19,8 +19,8 @@ public class Writer {
         return String.format("%s|%s|%s|%s|%s",
                 output(entry.timestamp),
                 entry.username,
-                output(entry.update),
-                entry.file,
+                output(entry.change.update),
+                entry.change.file,
                 output(entry.color));
     }
 
