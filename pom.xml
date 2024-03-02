@@ -55,6 +55,13 @@
     </dependency>
 
     <dependency>
+      <groupId>com.approvaltests</groupId>
+      <artifactId>approvaltests</artifactId>
+      <version>22.4.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
       <groupId>com.diffplug.spotless</groupId>
       <artifactId>spotless-maven-plugin</artifactId>
       <version>${spotless.version}</version>

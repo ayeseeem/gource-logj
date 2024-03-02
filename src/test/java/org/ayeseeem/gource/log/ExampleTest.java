@@ -4,11 +4,14 @@ import static java.awt.Color.BLUE;
 import static java.awt.Color.GREEN;
 import static java.awt.Color.RED;
 import static java.awt.Color.WHITE;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static org.ayeseeem.gource.log.Update.ADDED;
 import static org.ayeseeem.gource.log.Update.MODIFIED;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -17,6 +20,7 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
+import org.approvaltests.Approvals;
 import org.junit.Test;
 
 public class ExampleTest {
@@ -46,20 +50,35 @@ public class ExampleTest {
     }
 
     @Test
-    public void testWrite_Example_MatchesGoldBrick() throws Exception {
-        List<String> expected = Files.readAllLines(Paths.get("src/test/resources/example-goldbrick.log"));
-        assertThat(expected.size(), is(EG.size()));
+    public void testWrite_Example_Matches_ExampleFile() throws Exception {
+        String string = readString(Paths.get("src/test/resources/example.log"));
 
-        Path tempFile = Files.createTempFile(null, null);
-        PrintStream temp = new PrintStream(tempFile.toFile());
-        Writer.write(EG, temp);
+        Approvals.verify(string);
+    }
 
-        List<String> actual = Files.readAllLines(tempFile);
-        assertThat(actual.size(), is(EG.size()));
-        assertThat(actual.size(), is(5));
-        for (int i = 0; i < actual.size(); i++) {
-            assertThat(expected.get(i), is(actual.get(i)));
+    @Test
+    public void testWrite_Example() throws Exception {
+        try (ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                PrintStream ps = new PrintStream(baos, true, UTF_8.name())) {
+
+            Writer.write(EG, ps);
+
+            String data = baos.toString(UTF_8.name());
+            Approvals.verify(data);
         }
+    }
+
+    @Test
+    public void verifyApprovalTestsInstallation() {
+        Approvals.verify("Approval Tests should verify this string" + NL);
+    }
+
+    private static final String NL = String.format("%n");
+
+    // Bodge for Files.readString lacking in Java 8
+    private static String readString(Path path) throws IOException {
+        List<String> lines = Files.readAllLines(path);
+        return String.join(NL, lines) + NL;
     }
 
 }
