@@ -17,10 +17,10 @@ public class Writer {
 
     static String output(LogEntry entry) {
         return String.format("%s|%s|%s|%s|%s",
-                output(entry.timestamp),
-                entry.username,
-                output(entry.change.update),
-                entry.change.file,
+                output(entry.auditEntry.timestamp),
+                entry.auditEntry.username,
+                output(entry.auditEntry.change.update),
+                entry.auditEntry.change.file,
                 output(entry.color));
     }
 
