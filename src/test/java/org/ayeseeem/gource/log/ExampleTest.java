@@ -25,12 +25,12 @@ import org.junit.Test;
 
 public class ExampleTest {
 
-    private static final List<LogEntry> EG = Arrays.asList(
+    private static final Log EG = new Log(Arrays.asList(
             new LogEntry(new AuditEntry(Instant.parse("2023-01-01T01:11:11Z"), "the_user", new Change("root", ADDED)), WHITE),
             new LogEntry(new AuditEntry(Instant.parse("2023-02-01T02:22:22Z"), "the_user", new Change("root/README", ADDED)), BLUE),
             new LogEntry(new AuditEntry(Instant.parse("2023-03-01T03:33:33Z"), "the_user", new Change("root/the/file", ADDED)), RED),
             new LogEntry(new AuditEntry(Instant.parse("2023-04-01T04:44:44Z"), "the_user", new Change("root/the/file", MODIFIED)), RED),
-            new LogEntry(new AuditEntry(Instant.parse("2023-05-01T05:55:55Z"), "the_user", new Change("root/the/file2", ADDED)), GREEN));
+            new LogEntry(new AuditEntry(Instant.parse("2023-05-01T05:55:55Z"), "the_user", new Change("root/the/file2", ADDED)), GREEN)));
 
     @Test
     public void testGenerateExample() throws Exception {
@@ -39,7 +39,7 @@ public class ExampleTest {
         Writer.write(EG, egOut);
 
         List<String> generated = Files.readAllLines(Paths.get("src/test/resources/example.log"));
-        assertThat(generated.size(), is(EG.size()));
+        assertThat(generated.size(), is(EG.entries.size()));
         assertThat(generated.size(), is(5));
 
         assertThat(generated.get(0), is("2023-01-01T01:11:11Z|the_user|A|root|#FFFFFF"));
